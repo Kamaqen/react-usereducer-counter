@@ -1,7 +1,16 @@
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
+function reducer() {
+  return null;
+}
 export default function App() {
-  const [name, setName] = useState("Teddy");
+  // const [name, setName] = useState("Teddy");
 
-  return <div>{name}</div>;
+  const [state, dispatch] = useReducer(reducer, "Initial value");
+
+  useEffect(() => {
+    console.log("Current state:", state);
+  }, [state]);
+
+  return <div></div>;
 }
