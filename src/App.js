@@ -1,16 +1,26 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
+import "./styles.css";
 
-function reducer() {
-  return null;
+function fnReducer(state, action) {
+  console.log("state ", state); // Initial Value
+  console.log("action ", action); // TEST
+  return "Some data";
 }
 export default function App() {
-  // const [name, setName] = useState("Teddy");
+  const [estado, despachador] = useReducer(fnReducer, "Initial value");
 
-  const [state, dispatch] = useReducer(reducer, "Initial value");
+  function handleClick() {
+    despachador("TEST");
+  }
 
   useEffect(() => {
-    console.log("Current state:", state);
-  }, [state]);
+    console.log("Valor del state ", estado);
+  }, [estado]);
 
-  return <div></div>;
+  return (
+    <div className="App">
+      <h3>Use Reducer</h3>
+      <button onClick={handleClick}>Use Dispatch</button>
+    </div>
+  );
 }
